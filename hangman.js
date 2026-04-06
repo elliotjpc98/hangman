@@ -47,10 +47,15 @@ let guessLetter = function(){
     let input = document.getElementById("guess");
     let letter = input.value;
     letter = letter.toLowerCase();
-    if(word.indexOf(letter) < 0){
-        guessCount--;
+    if(guessCount === 0){ //No Guesses Allowed
+        input.value = ""; //Blank Value Inserted
     }
-    guesses+=letter;
-    input.value = ""; //Guess box is cleared after every guess
-    updatePage();
+    else{
+        if(word.indexOf(letter) < 0){
+            guessCount--;
+        }
+        guesses+=letter;
+        input.value = ""; //Guess box is cleared after every guess
+        updatePage();
+    }
 }
