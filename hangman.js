@@ -29,7 +29,15 @@ let updatePage = function(){
     clue.textContent = clueString;
 
     let guessArea = document.getElementById("guesses");
+    if (guessCount === 0){ //Dialog For Losing, 0 Guesses Left
+        guessArea.textContent = "Defeat, Try Again.";
+    }
+    else if(clueString.indexOf("_") < 0){ //Dialog For Winning, No Underscores Left
+        guessArea.textContent = "Victory!";
+    }
+    else{
     guessArea.textContent = "Guesses: "+guesses;
+    }
 
     let image = document.getElementById("hangmanpic");
     image.src = `images/hangman${guessCount}.gif`;
