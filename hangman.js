@@ -55,12 +55,17 @@ let guessLetter = function(){
             input.value = ""; //Blank Value Inserted
         }
         else{
-            if(word.indexOf(letter) < 0){
-                guessCount--;
+            if(guesses.indexOf(letter) >= 0){ //Repeated Guesses(Letters) Aren't Registered Alongside Other Guesses
+                input.value = "";
             }
-            guesses+=letter;
-            input.value = ""; //Guess box is cleared after every guess
-            updatePage();
+            else{
+                if(word.indexOf(letter) < 0){
+                    guessCount--;
+                }
+                guesses+=letter;
+                input.value = ""; //Guess box is cleared after every guess
+                updatePage();
+            }
         }
     }
 }
